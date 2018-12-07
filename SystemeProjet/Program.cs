@@ -6,7 +6,7 @@ namespace SystemeProjet
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello jeanno!");
+            Console.WriteLine("Hello soso!");
         }
     }
 }
