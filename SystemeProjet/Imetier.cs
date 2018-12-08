@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace SystemeProjet
-{ 
+{
 
     public interface Imetier
-{
-    void PrendreCommande();
+    {
+        void PrendreCommande();
 
-    void DistribuerPlat();
+        void DistribuerPlat();
 
-    void DebarrasserTable();
+        void DebarrasserTable();
 
-    void AccueillirClient();
+        void AccueillirClient();
 
-    void PlacerClient();
-}
+        void PlacerClient();
+    }
 }

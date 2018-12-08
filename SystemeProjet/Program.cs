@@ -6,6 +6,10 @@ namespace SystemeProjet
     {
         static void Main(string[] args)
         {
+
+            MaitreHotel Nbtest = new MaitreHotel();
+            Nbtest.AccueillirClient();
+
             ChefDeRang commanderun = new ChefDeRang();
             commanderun.PrendreCommande();
 
