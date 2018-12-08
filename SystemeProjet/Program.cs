@@ -6,7 +6,16 @@ namespace SystemeProjet
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello soso!");
+            ChefDeRang commanderun = new ChefDeRang();
+            commanderun.PrendreCommande();
+
+            ChefDeRang commanderdeux = new ChefDeRang();
+            commanderdeux.DistribuerPlat(commanderun.Cmd);
+
+            ChefDeRang commandertrois = new ChefDeRang();
+            commandertrois.DebarrasserTable();
+
+            Console.Read();
         }
     }
 }

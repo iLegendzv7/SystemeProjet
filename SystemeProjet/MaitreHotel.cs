@@ -6,12 +6,12 @@ namespace SystemeProjet
 {
     public class MaitreHotel
     {
-        void MaitreHotel.AccueillirClient()
+        void AccueillirClient()
         {
             throw new NotImplementedException();
         }
 
-        void MaitreHotel.PlacerClient()
+        void PlacerClient()
         {
             throw new NotImplementedException();
         }
