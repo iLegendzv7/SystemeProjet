@@ -41,7 +41,7 @@ namespace SystemeProjet
             int i = 0;
             int nombre = aleatoire.Next(1, 9);
 
-            int Nom = 0;
+            Nom = 0;
             Nom++;
 
 
@@ -60,7 +60,7 @@ namespace SystemeProjet
 
             }
 
-            int Table = 0;
+            Table = 0;
             if (Table < 10)
             {
                 Table++;
@@ -75,9 +75,7 @@ namespace SystemeProjet
             
 
 
-            MaitreHotel.nbTable = nbTable - 1;
-
-            Console.WriteLine(i);
+          
             Thread.Sleep(2000);
 
 
