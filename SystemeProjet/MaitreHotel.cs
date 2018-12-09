@@ -7,37 +7,42 @@ namespace SystemeProjet
 {
     public class MaitreHotel
     {
+        public static int nbTable = 50;
+        private static MaitreHotel instance = null;
+
         public int Nom { get; set; }
         public int Nombre { get; set; }
         public int Table { get; set; }
 
-        public MaitreHotel(int nom, int nombre, int table)
-        {
-            Nom = nom;
-            Nombre = nombre;
-            Table = table;
-        }
-
-        public MaitreHotel()
+        
+        private MaitreHotel()
         {
         }
 
-        private List<MaitreHotel> cmd = new List<MaitreHotel>();
-        public static int nbTable = 50;
+        public static MaitreHotel GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new MaitreHotel();
+            }
+            return instance;
+        }
 
+
+        
+
+        
+        //MaitreHotel ecrire = new MaitreHotel(nom, nombre, MaitreHotel.nbTable);
 
         public void AccueillirClient()
         {
-
-
-
-
-
+            
             Random aleatoire = new Random();
             int i = 0;
-            int _nbclient = aleatoire.Next(1, 9);
+            int nombre = aleatoire.Next(1, 9);
 
-
+            int Nom = 0;
+            Nom++;
 
 
             //MaitreHotel clt = new MaitreHotel(i, _nbclient, );
@@ -45,16 +50,30 @@ namespace SystemeProjet
             Console.WriteLine(i);
 
 
-            while (i < _nbclient)
+            while (i < nombre)
             {
 
-                Console.WriteLine("Client" + i + " : Nous sommes : " + _nbclient);
+                Console.WriteLine("Client" + i + " : Nous sommes : " + Nombre);
 
-
+                Nombre++;
                 i++;
 
             }
-            int nb = _nbclient;
+
+            int Table = 0;
+            if (Table < 10)
+            {
+                Table++;
+            }
+            else
+            {
+                Console.WriteLine("Toutes les tables sont occupées");
+            }
+
+
+
+            
+
 
             MaitreHotel.nbTable = nbTable - 1;
 
@@ -63,14 +82,10 @@ namespace SystemeProjet
 
 
 
-            MaitreHotel ecrire = new MaitreHotel(i, nb, MaitreHotel.nbTable);
+            
 
-            Console.WriteLine("Ca marche :" + ecrire.Nombre + "   " + ecrire.Nom + "   " + MaitreHotel.nbTable);
-        }
+            Console.WriteLine("Ca marche :" + Nombre + "   " + Nom + "   " + Table);
 
-        void PlacerClient()
-        {
-            throw new NotImplementedException();
         }
     }
 }
