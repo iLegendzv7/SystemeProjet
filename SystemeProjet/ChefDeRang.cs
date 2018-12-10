@@ -53,6 +53,7 @@ namespace SystemeProjet
             cmdd.Clear();
             Thread.Sleep(500 * MaitreHotel.GetInstance().Nombre);               //Temps durant lequel le Chef de Rang débarasse la table
             Console.WriteLine("[" + Horloge.heur + "h" + Horloge.minu + "min]   *** Le Chef de Rang a finit de débarrasser ! ***");
+            MaitreHotel.GetInstance().Nombre = 0;
         }
         public List<Plat> Cmdd
         {

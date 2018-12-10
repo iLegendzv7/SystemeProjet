@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Timers;
 
 namespace SystemeProjet
 {
@@ -6,23 +7,29 @@ namespace SystemeProjet
     {
         static void Main(string[] args)
         {
+           
             Horloge jalo = new Horloge();
 
+            Modele jali = new Modele();
+            jali.Pololo();
+            
+            //MaitreHotel NbTest = MaitreHotel.GetInstance();
+            //NbTest.AccueillirClient();
+            //NbTest.PacerClient();
 
-            MaitreHotel NbTest = MaitreHotel.GetInstance();
-            NbTest.AccueillirClient();
-            NbTest.PacerClient();
+            //ChefDeRang commanderun = new ChefDeRang();
+            //commanderun.PrendreCommande();
 
-            ChefDeRang commanderun = new ChefDeRang();
-            commanderun.PrendreCommande();
+            //ChefDeRang commanderdeux = new ChefDeRang();
+            //commanderdeux.DistribuerPlat(commanderun.Cmdd);
 
-            ChefDeRang commanderdeux = new ChefDeRang();
-            commanderdeux.DistribuerPlat(commanderun.Cmdd);
+            //ChefDeRang commandertrois = new ChefDeRang();
+            //commandertrois.DebarrasserTable();
 
-            ChefDeRang commandertrois = new ChefDeRang();
-            commandertrois.DebarrasserTable();
-
+            //Console.Read();
             Console.Read();
         }
+
+     
     }
 }

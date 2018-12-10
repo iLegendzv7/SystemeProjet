@@ -111,9 +111,9 @@ namespace SystemeProjet
                 Thread.Sleep(6000);     //Temps d'attente durant lequel les clients se placent à la table et regardent ce qu'ils vont prendre commme menu
                 reader.Close();
 
-                string majTable = "UPDATE tables SET numero = 4,disponible = 1 WHERE numero = 4";
-                MySqlCommand test = new MySqlCommand(majTable, connexion.Connection);
-                test.ExecuteNonQuery();
+                //string majTable = "UPDATE tables SET numero = 4,disponible = 1 WHERE numero = 4";
+                //MySqlCommand test = new MySqlCommand(majTable, connexion.Connection);
+                //test.ExecuteNonQuery();
 
 
             }
