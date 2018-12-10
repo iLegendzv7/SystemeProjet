@@ -53,21 +53,28 @@ namespace SystemeProjet
             while (i < nombre)
             {
 
-                Console.WriteLine("Client" + i + " : Nous sommes : " + Nombre);
+                //Console.WriteLine("[" + Horloge.heur + "h" + Horloge.minu + "min]   Client" + i + " : Nous sommes : " + Nombre);
 
                 Nombre++;
                 i++;
 
             }
+            Console.WriteLine("[" + Horloge.heur + "h" + Horloge.minu + "min]   Maitre d'hôtel : Bonjour messieurs dames, combien êtes-vous? ");
+            Console.WriteLine("[" + Horloge.heur + "h" + Horloge.minu + "min]   Client(s) : Bonjour, nous sommes " + Nombre);
+            
+
 
             Table = 0;
             if (Table < 10)
             {
                 Table++;
+                Console.WriteLine("[" + Horloge.heur + "h" + Horloge.minu + "min]   Bien, le Chef de Rang va venir vous placer à la table " + Table);
+                Console.WriteLine("[" + Horloge.heur + "h" + Horloge.minu + "min]   *** Le chef de rang place les clients ***");
+                Thread.Sleep(6000);     //Temps d'attente durant lequel les clients se placent à la table et regardent ce qu'ils vont prendre commme menu
             }
             else
             {
-                Console.WriteLine("Toutes les tables sont occupées");
+                Console.WriteLine("[" + Horloge.heur + "h" + Horloge.minu + "min]   Toutes les tables sont occupées");
             }
 
 
@@ -82,7 +89,7 @@ namespace SystemeProjet
 
             
 
-            Console.WriteLine("Ca marche :" + Nombre + "   " + Nom + "   " + Table);
+            //Console.WriteLine("Ca marche :" + Nombre + "   " + Nom + "   " + Table);
 
         }
     }

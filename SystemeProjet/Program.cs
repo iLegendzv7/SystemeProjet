@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace SystemeProjet
 {
@@ -6,9 +7,9 @@ namespace SystemeProjet
     {
         static void Main(string[] args)
         {
+            Horloge jalo = new Horloge();
 
-            //MaitreHotel Nbtest = new MaitreHotel();
-            //Nbtest.AccueillirClient();
+
             MaitreHotel NbTest = MaitreHotel.GetInstance();
             NbTest.AccueillirClient();
 
@@ -20,7 +21,12 @@ namespace SystemeProjet
 
             ChefDeRang commandertrois = new ChefDeRang();
             commandertrois.DebarrasserTable();
+            
 
+   
+            
+
+            
             Console.Read();
         }
     }
