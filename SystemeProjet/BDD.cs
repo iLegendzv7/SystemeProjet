@@ -1,46 +1,47 @@
-﻿using System;
-using System.Collections.Generic;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
+using System;
 
-namespace ConsoleApp1
+namespace SystemeProjet
 {
     public class BDD
     {
-
-        public MySqlConnection connect;
         private static BDD instance = null;
-        public static BDD Instance()
+        private static MySqlConnection connection;
+
+        public BDD()
         {
+            string connString = "SERVER=localhost ;DATABASE=systeme_projet;UID=root;PASSWORD=";
+            connection = new MySqlConnection(connString);
+
+            try
             {
-                if (instance == null)
-                {
-                    instance = new BDD();
-                }
-                return instance;
+                connection.Open();
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
-        public void bdd()
+
+        public static BDD GetInstance()
         {
-            if (connect == null)
+            if (instance == null)
             {
-                try
-                {
-                    connect = new MySqlConnection("SERVER=178.62.4.64;DATABASE=Groupe1_Pau;UID=Groupe1Pau;PASSWORD=grp1");
-                    connect.Open();
-                    Console.WriteLine("sys : INSTANCIATION CONNEXION SQL");
-                }
-                catch (MySql.Data.MySqlClient.MySqlException ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.ReadKey();
-                }
+                instance = new BDD();
             }
+
+            return instance;
         }
-        public void CloseConnection()
+
+        public void CloseConnection(MySqlConnection connection)
         {
-            connect.Close();
+            connection.Close();
+        }
+
+        public MySqlConnection Connection
+        {
+            get { return connection; }
+            set { connection = value; }
         }
     }
 }
-
-

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 
 namespace SystemeProjet
 {
@@ -12,6 +11,7 @@ namespace SystemeProjet
 
             MaitreHotel NbTest = MaitreHotel.GetInstance();
             NbTest.AccueillirClient();
+            NbTest.PacerClient();
 
             ChefDeRang commanderun = new ChefDeRang();
             commanderun.PrendreCommande();
@@ -21,12 +21,7 @@ namespace SystemeProjet
 
             ChefDeRang commandertrois = new ChefDeRang();
             commandertrois.DebarrasserTable();
-            
 
-   
-            
-
-            
             Console.Read();
         }
     }
