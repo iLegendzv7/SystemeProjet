@@ -8,6 +8,7 @@ namespace SystemeProjet
 {
     public class MaitreHotel
     {
+        //Mise en place du Singleton
         private static MaitreHotel instance = null;
 
         public int Nom { get; set; }
@@ -18,10 +19,7 @@ namespace SystemeProjet
 
         public int TableADebarrasser { get; set; }
 
-        private MaitreHotel()
-        {
-        }
-
+        //Création d'une instance pour Singleton
         public static MaitreHotel GetInstance()
         {
             if (instance == null)
@@ -30,11 +28,12 @@ namespace SystemeProjet
             }
             return instance;
         }
-
+        //Méthode pour la génération de client
         public void AccueillirClient()
         {
+            //Appelle de Random pour créer un nombre aléatoire entre 2 et 9
             Random aleatoire = new Random();
-            Nombre = aleatoire.Next(1, 9);
+            Nombre = aleatoire.Next(2, 9);
 
             Nom = 0;
             Nom++;
@@ -45,15 +44,16 @@ namespace SystemeProjet
 
             Thread.Sleep(2000);
         }
-
+        //Méthode pour l'attribution de table
         public void PlacerClient()
         {
             try
             {
+                //Instancie la connexion
                 BDD connexion = new BDD();
-
+                //Requête de selection de table
                 string tableDispo = "SELECT * FROM tables WHERE disponible = 0";
-
+                //Appel et execution
                 MySqlCommand cmd = new MySqlCommand(tableDispo, connexion.Connection);
                 MySqlDataReader reader = cmd.ExecuteReader();
 
@@ -63,7 +63,7 @@ namespace SystemeProjet
                 Console.WriteLine("[" + Horloge.heur + "h" + Horloge.minu + "min]   *** Le chef de rang place les clients ***");
                 Thread.Sleep(6000);     //Temps d'attente durant lequel les clients se placent à la table et regardent ce qu'ils vont prendre commme menu
                 reader.Close();
-
+                //Requête pour rendre la table indisponible
                 string majTable = "UPDATE tables SET numero = " + Table + ",disponible = 1 WHERE numero =" + Table;
                 MySqlCommand test = new MySqlCommand(majTable, connexion.Connection);
                 test.ExecuteNonQuery();

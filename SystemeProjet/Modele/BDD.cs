@@ -10,11 +10,13 @@ namespace SystemeProjet
 
         public BDD()
         {
+            //Création de la chaine de connection
             string connString = "SERVER=localhost ;DATABASE=systeme_projet;UID=root;PASSWORD=sosodu64";
             connection = new MySqlConnection(connString);
 
             try
             {
+                //Ouverture de la connection
                 connection.Open();
             }
             catch (MySql.Data.MySqlClient.MySqlException ex)
@@ -22,7 +24,7 @@ namespace SystemeProjet
                 Console.WriteLine(ex.Message);
             }
         }
-
+        //Création d'une instance pour le Singleton
         public static BDD GetInstance()
         {
             if (instance == null)
@@ -32,12 +34,7 @@ namespace SystemeProjet
 
             return instance;
         }
-
-        public void CloseConnection(MySqlConnection connection)
-        {
-            connection.Close();
-        }
-
+        //Mise en place des accesseurs GET et SET
         public MySqlConnection Connection
         {
             get { return connection; }

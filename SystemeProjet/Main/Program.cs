@@ -7,14 +7,14 @@ namespace SystemeProjet
     {
         static void Main(string[] args)
         {
-           
+
             Horloge horloge = new Horloge();        //Execute l'horloge
 
             Salle salle = new Salle();      //Execute le reste du code ainsi que les répétitions
-           
-            Console.Read();
+
+            Console.Read();         //Garde la console affiché
         }
 
-     
+
     }
 }
