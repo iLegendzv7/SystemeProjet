@@ -8,9 +8,9 @@ namespace SystemeProjet
         static void Main(string[] args)
         {
            
-            Horloge jalo = new Horloge();
+            Horloge horloge = new Horloge();
 
-            Modele jali = new Modele();
+            Salle salle = new Salle();
            
             Console.Read();
         }

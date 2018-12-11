@@ -5,10 +5,10 @@ using System.Timers;
 
 namespace SystemeProjet
 {
-    public class Modele
+    public class Salle
     {
 
-        public Modele()
+        public Salle()
         {
 
                 Timer gon = new Timer(30000);
