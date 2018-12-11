@@ -17,7 +17,7 @@ namespace SystemeProjet
             int i = 0;
 
             int client = MaitreHotel.GetInstance().Nombre;
-            Plat[] plats = new Plat[] { new Plat { NomPlat = "Hamburger", TempsPlat = 10 }, new Plat { NomPlat = "Couscous", TempsPlat = 25 }, new Plat { NomPlat = "Entrecôte Frites", TempsPlat = 15 } };
+            Plat[] plats = new Plat[] { new Plat { NomPlat = "Hamburger", TempsPlat = 10 }, new Plat { NomPlat = "Couscous", TempsPlat = 5 }, new Plat { NomPlat = "Entrecôte Frites", TempsPlat = 15 } };
             Console.WriteLine("[" + Horloge.heur + "h" + Horloge.minu + "min]   Chef De Rang : Bonjour, avez-vous choisi vos menus?");
 
             while (i < client)
@@ -52,14 +52,16 @@ namespace SystemeProjet
             });
             Thread.Sleep(1000 * MaitreHotel.GetInstance().Nombre);                  //Temps de prise de commande en fonction du nombre de clients
             Console.WriteLine("[" + Horloge.heur + "h" + Horloge.minu + "min]   Chef De Rang : J'ai bien noté vos commandes. Le temps d'attente est de " + tempsmax + " minutes");
+            MaitreHotel.GetInstance().TableAServir = MaitreHotel.GetInstance().Table;
             Thread.Sleep(tempsmax * 1000);                                      //Temps d'attente pour la préparation du repas
-            Console.WriteLine("[" + Horloge.heur + "h" + Horloge.minu + "min]   ***Les clients de la table " + MaitreHotel.GetInstance().Table + " sont servis!***");
-            Thread.Sleep(30 * 1000);                                            //Temps durant lequel les clients mangent
+            Console.WriteLine("[" + Horloge.heur + "h" + Horloge.minu + "min]   ***Les clients de la table " + MaitreHotel.GetInstance().TableAServir + " sont servis!***");
+            MaitreHotel.GetInstance().TableADebarrasser = MaitreHotel.GetInstance().TableAServir;
+            Thread.Sleep(15 * 1000);                                            //Temps durant lequel les clients mangent
         }
 
         public void DebarrasserTable()
         {
-            Console.WriteLine("[" + Horloge.heur + "h" + Horloge.minu + "min]   ***Les clients de la table " + MaitreHotel.GetInstance().Table + " ont finit de manger***");
+            Console.WriteLine("[" + Horloge.heur + "h" + Horloge.minu + "min]   ***Les clients de la table " + MaitreHotel.GetInstance().TableADebarrasser + " ont finit de manger***");
             cmdd.Clear();
             Thread.Sleep(500 * MaitreHotel.GetInstance().Nombre);               //Temps durant lequel le Chef de Rang débarasse la table
             Console.WriteLine("[" + Horloge.heur + "h" + Horloge.minu + "min]   *** Le Chef de Rang a finit de débarrasser ! ***");
@@ -68,7 +70,7 @@ namespace SystemeProjet
             try
             {
                 BDD connect = new BDD();
-                string majTable = "UPDATE tables SET numero = " + MaitreHotel.GetInstance().Table + ",disponible = 0 WHERE numero =" + MaitreHotel.GetInstance().Table;
+                string majTable = "UPDATE tables SET numero = " + MaitreHotel.GetInstance().TableADebarrasser + ",disponible = 0 WHERE numero =" + MaitreHotel.GetInstance().TableADebarrasser;
                 MySqlCommand test = new MySqlCommand(majTable, connect.Connection);
                 test.ExecuteNonQuery();
             }

@@ -14,6 +14,9 @@ namespace SystemeProjet
         public int Nombre { get; set; }
         public int Table { get; set; }
 
+        public int TableAServir { get; set; }
+
+        public int TableADebarrasser { get; set; }
 
         private MaitreHotel()
         {
@@ -43,7 +46,7 @@ namespace SystemeProjet
             Thread.Sleep(2000);
         }
 
-        public void PacerClient()
+        public void PlacerClient()
         {
             try
             {

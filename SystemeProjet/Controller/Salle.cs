@@ -7,25 +7,26 @@ namespace SystemeProjet
 {
     public class Salle
     {
+        private Timer gon;
 
         public Salle()
         {
 
-                Timer gon = new Timer(30000);
-                gon.Elapsed += Gon_Elapsed;
-                gon.Enabled = true;
-                gon.AutoReset = true;
-                gon.Start();
-                
-         
+            gon = new Timer(300);
+            gon.Elapsed += Gon_Elapsed;
+            gon.Enabled = true;
+            gon.AutoReset = true;
+            gon.Start();
+
+            
         }
 
         private void Gon_Elapsed(object sender, ElapsedEventArgs e)
         {
-     
+            gon.Interval = 30000;
             MaitreHotel NbTest = MaitreHotel.GetInstance();
             NbTest.AccueillirClient();
-            NbTest.PacerClient();
+            NbTest.PlacerClient();
 
             ChefDeRang commanderun = new ChefDeRang();
             commanderun.PrendreCommande();
@@ -35,6 +36,8 @@ namespace SystemeProjet
 
             ChefDeRang commandertrois = new ChefDeRang();
             commandertrois.DebarrasserTable();
+
+            
         }
         //public void Pololo()
 
@@ -59,7 +62,7 @@ namespace SystemeProjet
         //     }
 
 
-   // }
+        // }
 
 
     }
