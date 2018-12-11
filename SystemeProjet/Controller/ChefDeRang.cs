@@ -11,28 +11,28 @@ namespace SystemeProjet
         int tempsmax = 0;
 
 
-        public void PrendreCommande()
+        public void PrendreCommande()           // Méthode permettant de donner un plat pour chaque client en fonction du client.
         {
             Random aleatoire = new Random();
             int i = 0;
 
             int client = MaitreHotel.GetInstance().Nombre;
-            Plat[] plats = new Plat[] { new Plat { NomPlat = "Hamburger", TempsPlat = 10 }, new Plat { NomPlat = "Couscous", TempsPlat = 5 }, new Plat { NomPlat = "Entrecôte Frites", TempsPlat = 15 } };
+            Plat[] plats = new Plat[] { new Plat { NomPlat = "Hamburger", TempsPlat = 5 }, new Plat { NomPlat = "Couscous", TempsPlat = 15 }, new Plat { NomPlat = "Entrecôte Frites", TempsPlat = 10 } };
             Console.WriteLine("[" + Horloge.heur + "h" + Horloge.minu + "min]   Chef De Rang : Bonjour, avez-vous choisi vos menus?");
 
             while (i < client)
             {
-                int g = aleatoire.Next(3);
+                int g = aleatoire.Next(3);      //Permet de récupérer un plar aléatoirement dans notre tableau d'objet Plat.
                 Console.WriteLine("[" + Horloge.heur + "h" + Horloge.minu + "min]   Client" + i + " : Je voudrais un " + plats[g].NomPlat);
-                Plat pouloulou = plats[g];
-                cmdd.Add(pouloulou);
+                Plat listecommande = plats[g];
+                cmdd.Add(listecommande);        //Ajoute le plat à la liste des plats commandés sur le moment.
                 i++;
 
                 try
                 {
                     BDD connect = new BDD();
-                    string majTable = "UPDATE plats SET nomPlat = '" + plats[g].NomPlat + "', quantitéPlat = quantitéPlat - 1 WHERE nomPlat ='" + plats[g].NomPlat + "'";
-                    MySqlCommand test = new MySqlCommand(majTable, connect.Connection);
+                    string majTable = "UPDATE plats SET nomPlat = '" + plats[g].NomPlat + "', quantitéPlat = quantitéPlat - 1 WHERE nomPlat ='" + plats[g].NomPlat + "'"; //Requête permettant d'enlever la quantité de
+                    MySqlCommand test = new MySqlCommand(majTable, connect.Connection);                                                                                     //plats commandés dans la BDD        
                     test.ExecuteNonQuery();
                 }
                 catch
@@ -41,9 +41,9 @@ namespace SystemeProjet
                 }
             }
         }
-        public void DistribuerPlat(List<Plat> cmdd)
+        public void DistribuerPlat(List<Plat> cmdd)     // Méthode permettant de définir le temps d'attente puis de servir les clients
         {
-            cmdd.ForEach(x =>
+            cmdd.ForEach(x =>                               //Cherche le plat le plus long à préparer
             {
                 if (tempsmax < x.TempsPlat)
                 {
@@ -59,7 +59,7 @@ namespace SystemeProjet
             Thread.Sleep(15 * 1000);                                            //Temps durant lequel les clients mangent
         }
 
-        public void DebarrasserTable()
+        public void DebarrasserTable()                                         // Méthode permettant de libérer la table occupée et de signaler que le groupe de clients est parti
         {
             Console.WriteLine("[" + Horloge.heur + "h" + Horloge.minu + "min]   ***Les clients de la table " + MaitreHotel.GetInstance().TableADebarrasser + " ont finit de manger***");
             cmdd.Clear();

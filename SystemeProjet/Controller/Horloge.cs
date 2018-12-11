@@ -11,7 +11,7 @@ namespace SystemeProjet
         public static int heur = 0;
         
 
-        public Horloge()
+        public Horloge()        //Constructeur initialisant les Timers de minute et d'heure
         {
             Timer minute = new Timer(1000);
             minute.Elapsed += Minute_Elapsed;
@@ -27,7 +27,7 @@ namespace SystemeProjet
 
         }
 
-        private static void Minute_Elapsed(object sender, ElapsedEventArgs e)
+        private static void Minute_Elapsed(object sender, ElapsedEventArgs e)       //Configuration des minutes
         {
 
 
@@ -42,7 +42,7 @@ namespace SystemeProjet
 
         }
 
-        private static void Heure_Elapsed(object sender, ElapsedEventArgs e)
+        private static void Heure_Elapsed(object sender, ElapsedEventArgs e)        //Configuration des heures
         {
             if (heur == 24)
             {

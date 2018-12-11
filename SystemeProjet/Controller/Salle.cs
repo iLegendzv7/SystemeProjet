@@ -7,9 +7,9 @@ namespace SystemeProjet
 {
     public class Salle
     {
-        private Timer gon;
+        private Timer gon;      //Timer permettant de relancer le code, et donc de recevoir de nouveaux clients
 
-        public Salle()
+        public Salle()      
         {
 
             gon = new Timer(300);
@@ -25,7 +25,7 @@ namespace SystemeProjet
         {
             gon.Interval = 30000;
             MaitreHotel NbTest = MaitreHotel.GetInstance();
-            NbTest.AccueillirClient();
+            NbTest.AccueillirClient();                          //Appel de la méthode Accueillir Client
             NbTest.PlacerClient();
 
             ChefDeRang commanderun = new ChefDeRang();

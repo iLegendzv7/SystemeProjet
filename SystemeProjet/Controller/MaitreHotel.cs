@@ -39,7 +39,7 @@ namespace SystemeProjet
             Nom = 0;
             Nom++;
 
-            Console.WriteLine("_______________________________________________________________________________________________________________________");
+            Console.WriteLine("_______________________________________Un nouveau groupe de clients arrive______________________________________________");
             Console.WriteLine("[" + Horloge.heur + "h" + Horloge.minu + "min]   Maitre d'hôtel : Bonjour messieurs dames, combien êtes-vous? ");
             Console.WriteLine("[" + Horloge.heur + "h" + Horloge.minu + "min]   Client(s) : Bonjour, nous sommes " + Nombre);
 
