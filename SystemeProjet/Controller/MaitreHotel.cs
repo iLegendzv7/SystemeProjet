@@ -65,8 +65,8 @@ namespace SystemeProjet
                 reader.Close();
                 //Requête pour rendre la table indisponible
                 string majTable = "UPDATE tables SET numero = " + Table + ",disponible = 1 WHERE numero =" + Table;
-                MySqlCommand test = new MySqlCommand(majTable, connexion.Connection);
-                test.ExecuteNonQuery();
+                MySqlCommand cmd2 = new MySqlCommand(majTable, connexion.Connection);
+                cmd2.ExecuteNonQuery();
             }
             catch
             {

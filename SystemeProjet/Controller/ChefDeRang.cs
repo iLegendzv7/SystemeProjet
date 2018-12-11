@@ -34,8 +34,8 @@ namespace SystemeProjet
                     BDD connect = new BDD();
                     //Requete pour enlever la quantité de plats commandé
                     string majTable = "UPDATE plats SET nomPlat = '" + plats[g].NomPlat + "', quantitéPlat = quantitéPlat - 1 WHERE nomPlat ='" + plats[g].NomPlat + "'";
-                    MySqlCommand test = new MySqlCommand(majTable, connect.Connection);
-                    test.ExecuteNonQuery();
+                    MySqlCommand cmd = new MySqlCommand(majTable, connect.Connection);
+                    cmd.ExecuteNonQuery();
                 }
                 catch
                 {
@@ -75,8 +75,8 @@ namespace SystemeProjet
                 BDD connect = new BDD();
                 //Requête pour rendre une table disponible
                 string majTable = "UPDATE tables SET numero = " + MaitreHotel.GetInstance().TableADebarrasser + ",disponible = 0 WHERE numero =" + MaitreHotel.GetInstance().TableADebarrasser;
-                MySqlCommand test = new MySqlCommand(majTable, connect.Connection);
-                test.ExecuteNonQuery();
+                MySqlCommand cmd = new MySqlCommand(majTable, connect.Connection);
+                cmd.ExecuteNonQuery();
             }
             catch
             {

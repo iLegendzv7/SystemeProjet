@@ -9,7 +9,7 @@ namespace SystemeProjet
     {
         private Timer gon;      //Timer permettant de relancer le code, et donc de recevoir de nouveaux clients
 
-        public Salle()      
+        public Salle()
         {
 
             gon = new Timer(300);
@@ -18,15 +18,15 @@ namespace SystemeProjet
             gon.AutoReset = true;
             gon.Start();
 
-            
+
         }
 
         private void Gon_Elapsed(object sender, ElapsedEventArgs e)
         {
             gon.Interval = 30000;
-            MaitreHotel NbTest = MaitreHotel.GetInstance();
-            NbTest.AccueillirClient();                          //Appel de la méthode Accueillir Client
-            NbTest.PlacerClient();
+            MaitreHotel client = MaitreHotel.GetInstance();
+            client.AccueillirClient();                          //Appel de la méthode Accueillir Client
+            client.PlacerClient();
 
             ChefDeRang commanderun = new ChefDeRang();
             commanderun.PrendreCommande();
@@ -37,7 +37,7 @@ namespace SystemeProjet
             ChefDeRang commandertrois = new ChefDeRang();
             commandertrois.DebarrasserTable();
 
-            
+
         }
         //public void Pololo()
 
