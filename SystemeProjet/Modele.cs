@@ -10,32 +10,56 @@ namespace SystemeProjet
 
         public Modele()
         {
- 
+
+                Timer gon = new Timer(30000);
+                gon.Elapsed += Gon_Elapsed;
+                gon.Enabled = true;
+                gon.AutoReset = true;
+                gon.Start();
+                
+         
         }
-       public void Pololo()
- 
+
+        private void Gon_Elapsed(object sender, ElapsedEventArgs e)
         {
-            int pp = 0;
-            while (pp < 10)
-            {
-                MaitreHotel NbTest = MaitreHotel.GetInstance();
-                NbTest.AccueillirClient();
-                NbTest.PacerClient();
+     
+            MaitreHotel NbTest = MaitreHotel.GetInstance();
+            NbTest.AccueillirClient();
+            NbTest.PacerClient();
 
-                ChefDeRang commanderun = new ChefDeRang();
-                commanderun.PrendreCommande();
+            ChefDeRang commanderun = new ChefDeRang();
+            commanderun.PrendreCommande();
 
-                ChefDeRang commanderdeux = new ChefDeRang();
-                commanderdeux.DistribuerPlat(commanderun.Cmdd);
+            ChefDeRang commanderdeux = new ChefDeRang();
+            commanderdeux.DistribuerPlat(commanderun.Cmdd);
 
-                ChefDeRang commandertrois = new ChefDeRang();
-                commandertrois.DebarrasserTable();
-
-                pp++;
-            }
-
-
+            ChefDeRang commandertrois = new ChefDeRang();
+            commandertrois.DebarrasserTable();
         }
+        //public void Pololo()
+
+        // {
+        //     int pp = 0;
+        //     while (pp < 10)
+        //     {
+        //         MaitreHotel NbTest = MaitreHotel.GetInstance();
+        //         NbTest.AccueillirClient();
+        //         NbTest.PacerClient();
+
+        //         ChefDeRang commanderun = new ChefDeRang();
+        //         commanderun.PrendreCommande();
+
+        //         ChefDeRang commanderdeux = new ChefDeRang();
+        //         commanderdeux.DistribuerPlat(commanderun.Cmdd);
+
+        //         ChefDeRang commandertrois = new ChefDeRang();
+        //         commandertrois.DebarrasserTable();
+
+        //         pp++;
+        //     }
+
+
+   // }
 
 
     }

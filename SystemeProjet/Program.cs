@@ -11,7 +11,7 @@ namespace SystemeProjet
             Horloge jalo = new Horloge();
 
             Modele jali = new Modele();
-            jali.Pololo();
+           
             
             //MaitreHotel NbTest = MaitreHotel.GetInstance();
             //NbTest.AccueillirClient();

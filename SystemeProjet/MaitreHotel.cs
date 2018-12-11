@@ -39,7 +39,7 @@ namespace SystemeProjet
 
             Random aleatoire = new Random();
             int i = 0;
-            int nombre = aleatoire.Next(1, 9);
+            Nombre = aleatoire.Next(1, 9);
 
             Nom = 0;
             Nom++;
@@ -47,18 +47,18 @@ namespace SystemeProjet
 
             //MaitreHotel clt = new MaitreHotel(i, _nbclient, );
 
-            Console.WriteLine(i);
+            Console.WriteLine("_______________________________________________________________________________________________________________________");
 
 
-            while (i < nombre)
-            {
+            //while (i < nombre)
+            //{
 
                 //Console.WriteLine("[" + Horloge.heur + "h" + Horloge.minu + "min]   Client" + i + " : Nous sommes : " + Nombre);
 
-                Nombre++;
-                i++;
+              //  Nombre++;
+              //  i++;
 
-            }
+           // }
             Console.WriteLine("[" + Horloge.heur + "h" + Horloge.minu + "min]   Maitre d'hôtel : Bonjour messieurs dames, combien êtes-vous? ");
             Console.WriteLine("[" + Horloge.heur + "h" + Horloge.minu + "min]   Client(s) : Bonjour, nous sommes " + Nombre);
 
@@ -111,9 +111,9 @@ namespace SystemeProjet
                 Thread.Sleep(6000);     //Temps d'attente durant lequel les clients se placent à la table et regardent ce qu'ils vont prendre commme menu
                 reader.Close();
 
-                //string majTable = "UPDATE tables SET numero = 4,disponible = 1 WHERE numero = 4";
-                //MySqlCommand test = new MySqlCommand(majTable, connexion.Connection);
-                //test.ExecuteNonQuery();
+                string majTable = "UPDATE tables SET numero = 4,disponible = 1 WHERE numero = 4";
+                MySqlCommand test = new MySqlCommand(majTable, connexion.Connection);
+                test.ExecuteNonQuery();
 
 
             }

@@ -7,7 +7,7 @@ namespace SystemeProjet
 {
     class Horloge {
 
-        public static int minu = 0;
+        public static int minu = -30;
         public static int heur = 0;
 
         public Horloge()
