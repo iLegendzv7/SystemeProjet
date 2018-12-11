@@ -37,14 +37,12 @@ namespace SystemeProjet
                 heur++;
                 minu = 0;
             }
-            //Console.WriteLine(heur + " heure(s) et " + minu + " minute(s)'écoule");
-            //minute.Interval = 1000;
+
 
         }
 
         private static void Heure_Elapsed(object sender, ElapsedEventArgs e)
         {
-            //heur++;
             if (heur == 24)
             {
                 heur = 0;

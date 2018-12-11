@@ -17,13 +17,11 @@ namespace SystemeProjet
             int i = 0;
 
             int client = MaitreHotel.GetInstance().Nombre;
-            // int client = ecrire;
             Plat[] plats = new Plat[] { new Plat { NomPlat = "Hamburger", TempsPlat = 10 }, new Plat { NomPlat = "Couscous", TempsPlat = 25 }, new Plat { NomPlat = "Entrecôte Frites", TempsPlat = 15 } };
             Console.WriteLine("[" + Horloge.heur + "h" + Horloge.minu + "min]   Chef De Rang : Bonjour, avez-vous choisi vos menus?");
 
             while (i < client)
             {
-                // int y = aleatoire.Next(client);
                 int g = aleatoire.Next(3);
                 Console.WriteLine("[" + Horloge.heur + "h" + Horloge.minu + "min]   Client" + i + " : Je voudrais un " + plats[g].NomPlat);
                 Plat pouloulou = plats[g];
