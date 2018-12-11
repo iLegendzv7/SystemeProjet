@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
+using MySql.Data.MySqlClient;
 using System.Threading;
 
 namespace SystemeProjet
@@ -18,7 +18,7 @@ namespace SystemeProjet
 
             int client = MaitreHotel.GetInstance().Nombre;
             // int client = ecrire;
-            Plat[] plats = new Plat[] { new Plat { NomPlat = "hamburger", TempsPlat = 10 }, new Plat { NomPlat = "steak-frite", TempsPlat = 25 }, new Plat { NomPlat = "couscous", TempsPlat = 15 } };
+            Plat[] plats = new Plat[] { new Plat { NomPlat = "Hamburger", TempsPlat = 10 }, new Plat { NomPlat = "Couscous", TempsPlat = 25 }, new Plat { NomPlat = "Entrecôte Frites", TempsPlat = 15 } };
             Console.WriteLine("[" + Horloge.heur + "h" + Horloge.minu + "min]   Chef De Rang : Bonjour, avez-vous choisi vos menus?");
 
             while (i < client)
@@ -29,6 +29,18 @@ namespace SystemeProjet
                 Plat pouloulou = plats[g];
                 cmdd.Add(pouloulou);
                 i++;
+
+                try
+                {
+                    BDD connect = new BDD();
+                    string majTable = "UPDATE plats SET nomPlat = '" + plats[g].NomPlat + "', quantitéPlat = quantitéPlat - 1 WHERE nomPlat ='" + plats[g].NomPlat + "'";
+                    MySqlCommand test = new MySqlCommand(majTable, connect.Connection);
+                    test.ExecuteNonQuery();
+                }
+                catch
+                {
+                    Console.WriteLine("Erreur");
+                }
             }
         }
         public void DistribuerPlat(List<Plat> cmdd)
@@ -54,6 +66,18 @@ namespace SystemeProjet
             Thread.Sleep(500 * MaitreHotel.GetInstance().Nombre);               //Temps durant lequel le Chef de Rang débarasse la table
             Console.WriteLine("[" + Horloge.heur + "h" + Horloge.minu + "min]   *** Le Chef de Rang a finit de débarrasser ! ***");
             MaitreHotel.GetInstance().Nombre = 0;
+
+            try
+            {
+                BDD connect = new BDD();
+                string majTable = "UPDATE tables SET numero = " + MaitreHotel.GetInstance().Table + ",disponible = 0 WHERE numero =" + MaitreHotel.GetInstance().Table;
+                MySqlCommand test = new MySqlCommand(majTable, connect.Connection);
+                test.ExecuteNonQuery();
+            }
+            catch
+            {
+                Console.WriteLine("Erreur");
+            }
         }
         public List<Plat> Cmdd
         {

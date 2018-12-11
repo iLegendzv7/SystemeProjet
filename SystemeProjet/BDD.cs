@@ -10,7 +10,7 @@ namespace SystemeProjet
 
         public BDD()
         {
-            string connString = "SERVER=localhost ;DATABASE=systeme_projet;UID=root;PASSWORD=sosodu64";
+            string connString = "SERVER=localhost ;DATABASE=systeme_projet;UID=root;PASSWORD=";
             connection = new MySqlConnection(connString);
 
             try
